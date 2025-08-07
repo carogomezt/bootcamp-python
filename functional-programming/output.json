@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Alice",
+    "age": 25,
+    "email": "A***@example.COM",
+    "subscribed": true
+  },
+  {
+    "name": "Dan",
+    "age": 45,
+    "email": "d***@domain.com",
+    "subscribed": true
+  }
+]
