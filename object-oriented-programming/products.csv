@@ -1,0 +1,5 @@
+type,name,price,quantity,warranty_years,size
+electronic,Laptop,1200,5,2,,
+electronic,Smartphone,800,10,1,,
+clothing,T-Shirt,20,50,,L
+clothing,Jeans,40,30,,M
