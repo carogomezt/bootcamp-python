@@ -17,8 +17,7 @@ class Product:
     @quantity.setter
     def quantity(self, value):
         if value < 0:
-            print("Quantity cannot be negative.")
-            return
+            raise Exception("Quantity cannot be negative.")
         self._quantity = value
 
 
@@ -105,19 +104,17 @@ class Store:
                     quantity = int(row["quantity"])
 
                     if product_type == "electronic":
-                        warranty_years = int(row.get("warranty_years", 0))
-                        product = Electronic(name, price, quantity, warranty_years)
-
+                        warranty_months = int(row.get("warranty_months", 0))
+                        product = Electronic(name, price, quantity, warranty_months)
                     elif product_type == "clothing":
                         size = row.get("size", "M")
                         product = Clothing(name, price, quantity, size)
-
                     else:
                         product = Product(name, price, quantity)
 
-                    self.inventory.add_product(product)
+                    self.add_product_to_store(product)
         except FileNotFoundError:
-            print(f"File '{filename}' not found.")
+            print(f"File {filename} not found.")
         except Exception as e:
             print(f"Error loading CSV: {e}")
 
@@ -139,10 +136,10 @@ if __name__ == "__main__":
     store.show_store_inventory()
 
     # Update a product
-    store.update_product_in_store("Laptop", price=1100, quantity=8)
+    store.update_product_in_store(laptop.name, price=1100, quantity=8)
 
     # Remove a product
-    store.remove_product_from_store("Shirt")
+    store.remove_product_from_store(shirt.name)
 
     store.load_products_from_csv("products.csv")
 
